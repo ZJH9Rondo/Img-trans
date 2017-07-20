@@ -56,7 +56,6 @@ app.post('/imgtrans',function (req,res,next){
               return  new Promise(function (resolve,reject){
                   var canvas = new Canvas(width,height),  // 创建canvas
                       ctx = canvas.getContext('2d'),
-                      newSrc,
                       img;
 
                   fs.readFile(src, function(err,data){
@@ -72,12 +71,11 @@ app.post('/imgtrans',function (req,res,next){
             })();
 
             result.then(function (canvas){
-                fs.writeFile('./image/newImg/test.png',canvas.toBuffer(),function (err){
+                fs.writeFile(out,canvas.toBuffer(),function (err){
                    if(err) throw err;
 
-                   newSrc = './image/newImg/test.png';
                    var data = {
-                     src: newSrc
+                     src: out
                    };
 
                    res.status(200).json(data);
@@ -90,7 +88,6 @@ app.post('/imgtrans',function (req,res,next){
             return  new Promise(function (resolve,reject){
                 var canvas = new Canvas(width,height,'svg'),  // 创建canvas
                     ctx = canvas.getContext('2d'),
-                    newSrc,
                     img;
 
                 fs.readFile(src, function(err,data){
@@ -106,12 +103,11 @@ app.post('/imgtrans',function (req,res,next){
           })();
 
           result.then(function (canvas){
-              fs.writeFile('./image/newImg/test.svg',canvas.toBuffer(),function (err){
+              fs.writeFile(out,canvas.toBuffer(),function (err){
                  if(err) throw err;
 
-                 newSrc = './image/newImg/test.svg';
                  var data = {
-                   src: newSrc
+                   src: out
                  };
 
                  res.status(200).json(data);
@@ -125,7 +121,6 @@ app.post('/imgtrans',function (req,res,next){
 
                 var canvas = new Canvas(width,height),  // 创建canvas
                     ctx = canvas.getContext('2d'),
-                    newSrc,
                     img;
 
                 fs.readFile(src, function(err,data){
@@ -147,9 +142,9 @@ app.post('/imgtrans',function (req,res,next){
 
               // 异步回调，执行完写入操作，返回文件路径
               stream.on('close',function (){
-                newSrc = './image/newImg/test.jpeg';
+
                 var data = {
-                  src: newSrc
+                  src: out
                 };
 
                 res.status(200).json(data);
@@ -162,7 +157,6 @@ app.post('/imgtrans',function (req,res,next){
                 return new Promise(function (resolve,reject){
                     var canvas = new Canvas(width,height,'pdf'),
                         ctx = canvas.getContext('2d'),
-                        newSrc,
                         img,
                         x,
                         y;

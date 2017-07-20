@@ -3,7 +3,7 @@
 * 基于node-canvas 和　express 的一款npm包
 * PDF转换存在POST发送请求数据,需要使用body-parser处理url,在package.json中已写入
 
-  > index.html 为我在本地的简单测试文件，初期功能简单，后续会使用测试脚本测试覆盖率 
+  > index.html 为我在本地的简单测试文件，初期功能简单，后续会使用测试脚本测试覆盖率
 
   > 严格来说，这不算是一个根本的 npm dependices,更像是一个基于运行在后台的Canvas图片格式转换插件，既然已经有了 node-canvas ,为什么还需要 Img-tran
 
@@ -92,4 +92,5 @@
   * PDF返回文件支持下载
   * PDF多文本转换
   * Canvas转换后清晰度下降问题
-      　
+
+> 近期会写几篇做这个东西所涉及的一些知识点总结(主要是关于 Node 和 HTTP 以及　Git的使用)
